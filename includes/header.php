@@ -40,7 +40,9 @@
         <li class="nav-item">
           <a class="nav-link" href="operators.php">Operators</a>
         </li>
-      
+        <li class="nav-item">
+          <a class="nav-link" href="calculator.php">Calculator</a>
+        </li>
         
       </ul>
       <form class="d-flex" role="search">
@@ -56,7 +58,7 @@
 $_SESSION['username'] = "grecia1234";
 echo $_SESSION['username'];
 
-if (isset($_SESSION['username'])) {
+if (!isset($_SESSION['username'])) {
   echo "You are not logged in!";
 } else {
   echo "You are logged in!";
