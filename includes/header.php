@@ -1,67 +1,53 @@
 <?php
-  session_start();
+
+session_start();
+
 ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
-  </head>
-<body>
-<nav class="navbar navbar-expand-lg">
+
+
+<nav class="navbar navbar-custom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand  text-dark" href="index.php">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="calendar.php">Calendar</a>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link text-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pages
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="index.php">Home</a></li>
+            <li><a class="dropdown-item" href="datatypes.php">Datatypes</a></li>
+            <li><a class="dropdown-item" href="functions.php">Functions</a></li>
+            <li><a class="dropdown-item" href="operators.php">Operators</a></li>
+            <li><a class="dropdown-item" href="calculator.php">Calculator</a></li>
+            <li><a class="dropdown-item" href="calender.php">Calender</a></li>
+            <li><a class="dropdown-item" href="conditionals.php">Conditionals</a></li>
+            <li><a class="dropdown-item" href="loops.php">Loops</a></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="conditionals.php">Conditionals</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="datatypes.php">Datatypes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="functions.php">Functions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">Index</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="loops.php">Loops</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="operators.php">Operators</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="calculator.php">Calculator</a>
-        </li>
+        <div class="header-login">
+          <?php
+          if (isset($_SESSION['userId'])) {
+            echo '<form action="includes/logout.inc.php" method="post">
+            <button type="submit" name="logout-submit">Logout</button>
+          </form>';
+        }
+        else {
+            echo '<form action="includes/login.inc.php" method="post">
+            <input type="text" name="mailuid" placeholder="Usernam/E-mail...">
+            <input type="text" name="pwd" placeholder="Password...">
+            <button type="submit" name="login-submit">Login</button>
+          </form>
+          <a href="signup.php">Signup</a>';
+        }
+          ?>
         
+      
+        </div>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
     </div>
   </div>
 </nav>
-<body>
-<?php
-
-$_SESSION['username'] = "grecia1234";
-echo $_SESSION['username'];
-
-if (!isset($_SESSION['username'])) {
-  echo "You are not logged in!";
-} else {
-  echo "You are logged in!";
-}
-?>
-</body>
